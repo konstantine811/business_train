@@ -3,11 +3,14 @@
 @import './var';
 // mixins
 @import './mixins';
+// features
+@import './grid';
 // partials
 @import './reset';
 @import './logo';
 @import './preloader';
 @import './common';
 @import './header';
+@import './carousel';
 // pages
 @import './main-page';

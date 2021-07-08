@@ -6,13 +6,16 @@ body {
   &-md {
     @include containers(1140px);
   }
-  &-lg {
-    @include containers(1084px);
-  }
 }
 
 .d-flex {
   display: flex;
+}
+
+.flex {
+  &-column {
+    flex-direction: column;
+  }
 }
 
 .justify {
@@ -190,5 +193,12 @@ body {
   &--orange {
     background-color: $orange;
     color: $white;
+  }
+}
+
+// img response
+.img {
+  &-response {
+    width: 100%;
   }
 }

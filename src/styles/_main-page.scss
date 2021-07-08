@@ -3,8 +3,8 @@
 }
 
 .main-section {
-  height: calc(100% - #{$header-min-height});
-  background: linear-gradient(180deg, #709dca 90%, $white 10%);
+  min-height: calc(100% - #{$header-min-height});
+  background: linear-gradient(180deg, #709dca 72%, $white 10%);
   &__head {
     padding-top: 82px;
     padding-bottom: 19px;
@@ -28,5 +28,14 @@
     margin-top: 67px;
     display: flex;
     justify-content: center;
+  }
+}
+
+.section-second {
+  &__head {
+    padding-bottom: 84px;
+  }
+  &__title {
+    margin-bottom: 16px;
   }
 }
