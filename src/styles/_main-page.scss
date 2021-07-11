@@ -4,7 +4,7 @@
 
 .main-section {
   min-height: calc(100% - #{$header-min-height});
-  background: linear-gradient(180deg, #709dca 72%, $white 10%);
+  background: linear-gradient(180deg, $blue 72%, $white 10%);
   &__head {
     padding-top: 82px;
     padding-bottom: 19px;
@@ -32,10 +32,28 @@
 }
 
 .section-second {
+  padding-bottom: 100px;
   &__head {
     padding-bottom: 84px;
   }
   &__title {
     margin-bottom: 16px;
+  }
+}
+
+.section-third {
+  background-color: $orange-2;
+  position: relative;
+  min-height: 623px;
+  &__img {
+    background-image: url('../assets/img/about_us_img.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }

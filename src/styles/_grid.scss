@@ -1,22 +1,61 @@
 @use "sass:math";
 $columns: 12;
 $col-size: math.div(100%, $columns);
+$gutter: 12px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+
+// borders
+.border {
+  border: 1px solid black;
+}
 
 .row {
   display: flex;
   flex-wrap: wrap;
+  margin: -$gutter;
 }
 
-.col-1 {
-  width: $col-size * 1;
+@mixin col-size($width, $padding: $gutter) {
+  width: $width;
+  padding: $padding;
 }
 
-.col-2 {
-  width: $col-size * 2;
+@for $i from 1 through $columns {
+  .col-#{$i} {
+    @include col-size($col-size * $i);
+  }
 }
 
-@media only screen and (max-width: 600px) {
-  .col-sm-12 {
-    width: $col-size * 12;
+@media (max-width: $sm) {
+  @for $i from 1 through $columns {
+    .col-xs-#{$i} {
+      @include col-size($col-size * $i);
+    }
+  }
+}
+
+@media (min-width: $sm) {
+  @for $i from 1 through $columns {
+    .col-sm-#{$i} {
+      @include col-size($col-size * $i);
+    }
+  }
+}
+
+@media (min-width: $md) {
+  @for $i from 1 through $columns {
+    .col-md-#{$i} {
+      @include col-size($col-size * $i);
+    }
+  }
+}
+
+@media (min-width: $lg) {
+  @for $i from 1 through $columns {
+    .col-lg-#{$i} {
+      @include col-size($col-size * $i);
+    }
   }
 }

@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 const folderBuild = 'build';
@@ -21,9 +20,8 @@ const PAGES = fs
 const pug = {
   test: /\.pug$/,
   use: [
-    'html-loader',
     {
-      loader: 'pug-html-loader',
+      loader: 'pug-loader',
       options: {
         pretty: true,
       },
@@ -53,8 +51,20 @@ module.exports = {
         use: ['ts-loader'],
       },
       {
-        test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+        test: /\.(eot|woff|woff2|ttf)([\?]?.*)$/,
         loader: 'file-loader',
+      },
+      /* {
+        test: /\.(gif|png|jpg)$/,
+        loader: 'file-loader',
+      }, */
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'url-loader',
+        options: {
+          name: '[name].[hash].[ext]',
+          esModule: false,
+        },
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -69,6 +79,7 @@ module.exports = {
               },
             },
           },
+          'resolve-url-loader',
           'sass-loader',
         ],
       },
@@ -102,15 +113,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: mode ? '[name].css' : '[name].[contenthash].css',
       chunkFilename: mode ? '[id].css' : '[id].[contenthash].css',
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, 'src/'),
-          to: 'images/',
-          context: 'app/',
-        },
-      ],
     }),
   ],
   output: {
